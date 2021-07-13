@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://link-mt3-site/sitemap.xml

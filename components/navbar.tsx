@@ -1,34 +1,57 @@
-import Link from 'next/link'
-import navbarcss from '../../styles/navbar.module.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faShoppingCart} from '@fortawesome/free-solid-svg-icons'
-import {faUserCircle} from '@fortawesome/free-regular-svg-icons';
+import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
 
-export default function nav(){
-    const titleweb="Lucci Design"
- return(
-   <div className='Navbara'>
-       <nav className={navbarcss.nav}>
-       <Link href='../homepage/homepage'className={navbarcss.links}><h1 className={navbarcss.titleweb}>{titleweb}</h1></Link>
-     
-      <div className={navbarcss.navbar}>
-          
-      <Link href='../homepage/homepage' className={navbarcss.Link}><p className={navbarcss.links}>Cuisine</p></Link>
-      <Link href='../index' className={navbarcss.Link}><p className={navbarcss.links}>Rangement</p></Link>
-      <Link href='../index' className={navbarcss.Link}><p className={navbarcss.links}>Chaises</p></Link>
-      <Link href='../index' className={navbarcss.Link}><p className={navbarcss.links}>Tables</p></Link>
-      <Link href='../salon/salon' className={navbarcss.Link}><p className={navbarcss.links}>Salon</p></Link>
-      <Link href='../index' className={navbarcss.Link}><p className={navbarcss.links}>Décoration</p></Link>
-      <Link href='../index' className={navbarcss.Link}><p className={navbarcss.links}>Autres</p></Link>
-      <Link href='../index' className={navbarcss.Link}><p className={navbarcss.links}>Notre vision</p></Link> 
-      <form>
-        <input type="search" placeholder="Rechercher"/>
-      </form>
-      <Link href='../index' className={navbarcss.Link}><FontAwesomeIcon icon={faUserCircle} className={navbarcss.links} className={navbarcss.iconnav}/></Link>
-      <Link href='../index' className={navbarcss.Link}><FontAwesomeIcon icon={faShoppingCart} className={navbarcss.links} className={navbarcss.iconnav}/></Link>
-       
-     </div>
-     </nav>
-    </div>
- )
+export default function nav() {
+	const titleweb = "Lucci Design";
+	return (
+		<div className="Navbara">
+			<nav>
+				<Link href="../homepage/homepage">
+					<a>
+						<h1>{titleweb}</h1>
+					</a>
+				</Link>
+
+				{/* salla7a kif magadithe ena lfou9 !! */}
+
+				<div>
+					<Link href="/">
+						<p>Cuisine</p>
+					</Link>
+					<Link href="/">
+						<p>Rangement</p>
+					</Link>
+					<Link href="/">
+						<p>Chaises</p>
+					</Link>
+					<Link href="/">
+						<p>Tables</p>
+					</Link>
+					<Link href="/salon">
+						<p>Salon</p>
+					</Link>
+					<Link href="/">
+						<p>Décoration</p>
+					</Link>
+					<Link href="/">
+						<p>Autres</p>
+					</Link>
+					<Link href="/">
+						<p>Notre vision</p>
+					</Link>
+					<form>
+						<input type="search" placeholder="Rechercher" />
+					</form>
+					<Link href="../index">
+						<FontAwesomeIcon icon={faUserCircle} />
+					</Link>
+					<Link href="../index">
+						<FontAwesomeIcon icon={faShoppingCart} />
+					</Link>
+				</div>
+			</nav>
+		</div>
+	);
 }

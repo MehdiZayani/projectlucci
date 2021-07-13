@@ -1,60 +1,52 @@
-import React from 'react';
+import React, { useState } from "react";
+import { Product } from "../models/Product";
 
-export default function Cart({ cart, setCart }) {
-  const getTotalSum = () => {
-    return cart.reduce(
-      (sum, { cost, quantity }) => sum + cost * quantity,
-      0
-    );
-  };
+export const Cart: React.FC = () => {
+	const [cart, setCart] = useState<Product[]>([]);
 
-  const clearCart = () => {
-    setCart([]);
-  };
+	const getTotalSum = () => {
+		let sum = 0;
+		cart.forEach((p) => {
+			sum += p.cost;
+		});
+		return sum;
+	};
 
-  const setQuantity = (product, amount) => {
-    const newCart = [...cart];
-    newCart.find(
-      (item) => item.name === product.name
-    ).quantity = amount;
-    setCart(newCart);
-  };
+	const clearCart = () => setCart([]);
 
-  const removeFromCart = (productToRemove) => {
-    setCart(
-      cart.filter((product) => product !== productToRemove)
-    );
-  };
+	const setQuantity = (product: Product, value: number) => {
+		/** lezmk state management lehnee.. */
+	};
 
-  return (
-    <>
-      <h1>Cart</h1>
-      {cart.length > 0 && (
-        <button onClick={clearCart}>Clear Cart</button>
-      )}
-      <div className="products">
-        {cart.map((product, idx) => (
-          <div className="product" key={idx}>
-            <h3>{product.name}</h3>
-            <h4>Dt{product.cost}</h4>
-            <input
-              value={product.quantity}
-              onChange={(e) =>
-                setQuantity(
-                  product,
-                  parseInt(e.target.value)
-                )
-              }
-            />
-            <img src={product.image} alt={product.name} />
-            <button onClick={() => removeFromCart(product)}>
-              Remove
-            </button>
-          </div>
-        ))}
-      </div>
+	const removeFromCart = (product: Product) => {
+		setCart(
+			cart.filter((p) => {
+				p.id != product.id;
+			})
+		);
+	};
 
-      <div>Total Cost: DT{getTotalSum()}</div>
-    </>
-  );
-}
+	return (
+		<>
+			<h1>Cart</h1>
+			{cart.length > 0 && <button onClick={clearCart}>Clear Cart</button>}
+			<div>
+				{cart.map((product) => (
+					<div key={product.id}>
+						<h3>{product.name}</h3>
+						<h4>Dt{product.cost}</h4>
+						<input
+							type="number"
+							value={quantity}
+							onChange={(e) => setQuantity(product, quantity)}
+						/>
+						<img src={product.image} alt={product.name} />
+						<button onClick={() => removeFromCart(product)}>Remove</button>
+					</div>
+				))}
+			</div>
+
+			<div>Total Cost: DT{getTotalSum()}</div>
+		</>
+	);
+};
