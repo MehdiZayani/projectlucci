@@ -1,14 +1,12 @@
-import styles from '../styles/Home.module.css'
-import Navbar from '../components/navbar'
-import Homepage from './homepage'
-// import link from 'next/link'
+import React from "react";
+import HeadTag from "../components/HeadTag";
+import Navbar from "../components/navbar";
 
 export default function Home() {
-  
-  return (
-    <div>
-      <Homepage></Homepage>
-    </div>
-    
-  )
+	return (
+		<div>
+			<HeadTag title="Home" />
+			<Navbar></Navbar>
+		</div>
+	);
 }

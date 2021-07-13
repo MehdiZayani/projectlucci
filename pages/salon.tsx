@@ -1,46 +1,36 @@
-import Navbar from '../components/navbar'
-import React, { useState } from 'react';
-import Products from '../components/productsSalon';
-import Cart from '../components/Cart';
+import React, { useState } from "react";
+import Navbar from "../components/navbar";
+import HeadTag from "../components/HeadTag";
+import Link from "next/link";
 
-const PAGE_PRODUCTS = 'products';
-const PAGE_CART = 'cart';
+const PAGE_PRODUCTS = "products";
+const PAGE_CART = "cart";
 
-function App() {
-  const [cart, setCart] = useState([]);
-  const [page, setPage] = useState(PAGE_PRODUCTS);
+export default function Salon() {
+	const [cart, setCart] = useState([]);
+	const [page, setPage] = useState(PAGE_PRODUCTS);
 
-  const navigateTo = (nextPage) => {
-    setPage(nextPage);
-  };
+	const getCartTotal = () => {
+		return cart.reduce((sum, { quantity }) => sum + quantity, 0);
+	};
 
-  const getCartTotal = () => {
-    return cart.reduce(
-      (sum, { quantity }) => sum + quantity,
-      0
-    );
-  };
-
-  return (
-    <div className="App">
-        <Navbar></Navbar>
-      <header>
-        <button onClick={() => navigateTo(PAGE_CART)}>
-          Go to Cart ({getCartTotal()})
-        </button>
-
-        <button onClick={() => navigateTo(PAGE_PRODUCTS)}>
-          View Products
-        </button>
-      </header>
-      {page === PAGE_PRODUCTS && (
-        <Products cart={cart} setCart={setCart} />
-      )}
-      {page === PAGE_CART && (
-        <Cart cart={cart} setCart={setCart} />
-      )}
-    </div>
-  );
+	return (
+		<div className="Salon">
+			<HeadTag title="Salon" />
+			<Navbar></Navbar>
+			<header>
+				<Link href="/cart">
+					<a>Go to Cart</a>
+				</Link>
+				<Link href="/products">
+					<a>View Products</a>
+				</Link>
+			</header>
+		</div>
+	);
 }
 
-export default App;
+/**
+ *
+ * zid 5amem feha !
+ */
